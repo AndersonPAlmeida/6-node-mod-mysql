@@ -1,20 +1,17 @@
 import { Request, Response } from 'express';
 import { User } from '../models/User';
 import { Product } from '../models/Product';
-import { Op } from 'sequelize';
+import { Op, where } from 'sequelize';
 
 export const home = async (req: Request, res: Response)=>{
+    // let results = await User.findAll({where: {name: 'Fulaninho'}});
+    // if(results.length > 0){
+    //     let usuario = results[0];
+
+    //     await usuario.destroy();
+    // }
     //Consulta
-    let searchName: string = 'bon';
-    let users = await  User.findAll({
-        where: {
-           age:{
-            [Op.gte]: 18
-           }
-        },
-        offset: 2,
-        limit: 2
-    });
+    let users = await User.findAll();
     
     let age: number = 90;
     let showOld: boolean = false;
@@ -41,7 +38,7 @@ export const salvarUsuario = async (req: Request, res: Response)=>{
     const user = User.build();
     //Outra forma realizar a desconstrução
     // let { name, age } = req.body;
-    
+
     if(req.body.age !== ''){
         user.name = req.body.name;
         user.age = parseInt(req.body.age);

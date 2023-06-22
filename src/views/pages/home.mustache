@@ -25,6 +25,9 @@ Opa {{name}} {{lastName}}, tudo bem?
 <ul>
     {{#users}}
         <li>{{name}} - Idade: {{age}}</li>
+        <a href="/usuario/{{id}}/mais" id="{{id}}">+</a>
+        <a href="/usuario/{{id}}/menos" id="{{id}}">-</a>
+        <a href="/usuario/{{id}}/excluir" id="{{id}}">Del</a>
     {{/users}}
 </ul>
 
