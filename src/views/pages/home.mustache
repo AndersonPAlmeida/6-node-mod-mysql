@@ -9,6 +9,18 @@ Opa {{name}} {{lastName}}, tudo bem?
 {{/showOld}}
 
 <hr>
+
+<fieldset>
+    <legend>Novo Usuário</legend>
+    <form method="POST" action="/novousuario">
+        <input type="text" name="name" placeholder="Digite um nome" required>
+        <br><br>
+        <input type="text" name="age" placeholder="Digite um idade">
+        <br><br>
+        <input type="submit" value="Inserir Usuário">
+    </form>
+</fieldset>
+
 <h2>Usuários do banco</h2>
 <ul>
     {{#users}}

@@ -14,5 +14,5 @@ router.get('/sobre', InfoController.sobre);
 router.get('/nome', UserController.nome);
 router.get('/idade', UserController.idadeForm);
 router.post('/idade-resultado', UserController.idadeAction);
-
+router.post('/novousuario', HomeController.salvarUsuario);
 export default router;

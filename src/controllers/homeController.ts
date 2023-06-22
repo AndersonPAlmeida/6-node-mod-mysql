@@ -5,24 +5,17 @@ import { Op } from 'sequelize';
 
 export const home = async (req: Request, res: Response)=>{
     //Consulta
-    /* let searchName: string = 'bon';
-    // let users = await  User.findAll({
-    //     where: {
-    //        age:{
-    //         [Op.gte]: 18
-    //        }
-    //     },
-    //     offset: 2,
-    //     limit: 2
-    }); */
-
-    //Build + Save
-    const user = User.build({
-        name: 'Fulaninho',
-        age: 25
+    let searchName: string = 'bon';
+    let users = await  User.findAll({
+        where: {
+           age:{
+            [Op.gte]: 18
+           }
+        },
+        offset: 2,
+        limit: 2
     });
-    await user.save();
-    //Create
+    
     let age: number = 90;
     let showOld: boolean = false;
 
@@ -39,6 +32,24 @@ export const home = async (req: Request, res: Response)=>{
         showOld,
         products: list,
         expensives: expensiveList,
-        frasesDoDia: []
+        frasesDoDia: [],
+        users
     });
+};
+
+export const salvarUsuario = async (req: Request, res: Response)=>{
+    const user = User.build();
+    //Outra forma realizar a desconstrução
+    // let { name, age } = req.body;
+    
+    if(req.body.age !== ''){
+        user.name = req.body.name;
+        user.age = parseInt(req.body.age);
+    } else {
+        user.name = req.body.name;
+    }
+    
+    await user.save();
+
+    res.redirect('/');
 };
