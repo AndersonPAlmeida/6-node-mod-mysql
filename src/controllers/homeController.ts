@@ -6,7 +6,13 @@ import { Op, where } from 'sequelize';
 export const home = async (req: Request, res: Response)=>{
     //Consulta
     let users = await User.findAll();
-    console.log('Consultado');
+    const [usuario, created] = await User.findOrBuild({
+        where: {name: "Anderson"},
+        defaults: {
+            age: 80
+        }
+    });
+    usuario.save();
     
     let age: number = 90;
     let showOld: boolean = false;

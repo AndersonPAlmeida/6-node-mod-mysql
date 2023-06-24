@@ -24,7 +24,7 @@ Opa {{name}} {{lastName}}, tudo bem?
 <h2>Usuários do banco</h2>
 <ul>
     {{#users}}
-        <li>{{name}} - Idade: {{age}}</li>
+        <li>({{firstLetterOfname}})=>{{name}} - Idade: {{age}}</li>
         <a href="/usuario/{{id}}/mais" id="{{id}}">+</a>
         <a href="/usuario/{{id}}/menos" id="{{id}}">-</a>
         <a href="/usuario/{{id}}/excluir" id="{{id}}">Del</a>
